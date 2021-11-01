@@ -1,0 +1,27 @@
+{
+  "name": "bitrix24api",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node .",
+    "build:watch": "tsc -w",
+    "pm2-dev": "pm2-runtime start pm2.local.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.38"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.9",
+    "typescript": "^4.4.4"
+  }
+}
