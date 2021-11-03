@@ -40,6 +40,8 @@ export const getAllDeals = async () => {
         return true
     });
 
+    return bitrixDeals
+
 }
 
 export const getAllLeads = async () => {
@@ -74,7 +76,7 @@ export const getAllLeads = async () => {
         return true
     });
 
-
+    return bitrixLeads
 }
 
 export const getAllStatuses = async () => {
