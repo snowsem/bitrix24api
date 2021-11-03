@@ -22,6 +22,10 @@ export default class BitrixApi {
         return await this.api.get('crm.deal.list.json', { params: { ...payload } });
     };
 
+    getLeads = async (payload: any = null)=>{
+        return await this.api.get('crm.lead.list.json', { params: { ...payload } });
+    };
+
     getStageHistory = async(payload = null)=> {
         return await this.api.get('crm.stagehistory.list.json', { params: { ...payload } });
     };
@@ -53,9 +57,11 @@ export default class BitrixApi {
             const apiResult = await apiMethod({ ...payload,...filter });
 
             if (apiResult.data.result.length>0) {
+
                 data = [...data, ...apiResult.data.result];
                 const lastElem = apiResult.data.result.pop();
                 nextId = lastElem.ID;
+                console.log('Name function:',apiMethod.name, 'Next ID:', nextId, 'Size:', data.length)
             } else {
                 finish = true;
                 return data;

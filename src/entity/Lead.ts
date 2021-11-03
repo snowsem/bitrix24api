@@ -12,8 +12,7 @@ import {
 import {Status} from "./Status";
 
 @Entity()
-export class Deal extends BaseEntity{
-
+export class Lead extends BaseEntity{
     @PrimaryColumn({
         type: "bigint"
     })
@@ -24,43 +23,32 @@ export class Deal extends BaseEntity{
         nullable:true
     })
     TITLE:string;
-    @Column({
-        nullable:true
-    })
-    TYPE_ID:string;
-    @Column({
-        nullable:true
-    })
-    PROBABILITY:string;
-    @Column({
-        nullable:true
-    })
-    STAGE_ID:string;
-    @Column({
-        nullable:true
-    })
-    CURRENCY_ID:string;
-    @Column({
-        nullable:true,
-        precision: 19,
-        scale: 2,
-        type: "decimal"
-    })
-    OPPORTUNITY:string;
 
     @Column({
         nullable:true
     })
-    IS_MANUAL_OPPORTUNITY:string;
+    HONORIFIC:string;
 
     @Column({
         nullable:true
     })
-    TAX_VALUE:string;
+    NAME:string;
+
     @Column({
         nullable:true
     })
-    LEAD_ID:string;
+    SECOND_NAME:string;
+
+    @Column({
+        nullable:true
+    })
+    LAST_NAME:string;
+
+    @Column({
+        nullable:true
+    })
+    COMPANY_TITLE:string;
+
     @Column({
         nullable:true
     })
@@ -74,18 +62,84 @@ export class Deal extends BaseEntity{
     @Column({
         nullable:true
     })
-    QUOTE_ID:string;
+    IS_RETURN_CUSTOMER:string;
 
+    @Column({
+        nullable:true
+    })
+    BIRTHDATE:string;
 
+    @Column({
+        nullable:true
+    })
+    SOURCE_ID:string;
+
+    @Column({
+        nullable:true,
+        type:"text"
+    })
+    SOURCE_DESCRIPTION:string;
+
+    @Column({
+        nullable:true
+    })
+    STATUS_ID:string;
+
+    @Column({
+        nullable:true,
+        type:"text"
+    })
+    STATUS_DESCRIPTION:string;
+
+    @Column({
+        nullable:true
+    })
+    POST:string;
+
+    @Column({
+        nullable:true,
+        type:"text"
+    })
+    COMMENTS:string;
+
+    @Column({
+        nullable:true
+    })
+    CURRENCY_ID:string;
+
+    @Column({
+        nullable:true
+    })
+    OPPORTUNITY:string;
+
+    @Column({
+        nullable:true
+    })
+    IS_MANUAL_OPPORTUNITY:string;
+
+    @Column({
+        nullable:true
+    })
+    HAS_PHONE:string;
+
+    @Column({
+        nullable:true
+    })
+    HAS_EMAIL:string;
+
+    @Column({
+        nullable:true
+    })
+    HAS_IMOL:string;
 
     @Column({
         nullable:true
     })
     ASSIGNED_BY_ID:string;
+
     @Column({
         nullable:true
     })
-
     CREATED_BY_ID:string;
 
     @Column({
@@ -106,71 +160,20 @@ export class Deal extends BaseEntity{
     DATE_MODIFY:string;
 
     @Column({
+        nullable:true,
+        type: "datetime"
+    })
+    DATE_CLOSED:string;
+
+    @Column({
+        nullable:true
+    })
+    STATUS_SEMANTIC_ID:string;
+
+    @Column({
         nullable:true
     })
     OPENED:string;
-
-    @Column({
-        nullable:true
-    })
-    CLOSED:string;
-
-    @Column({
-        nullable:true,
-        type: "text"
-    })
-    COMMENTS:string;
-
-    @Column({
-        nullable:true
-    })
-    ADDITIONAL_INFO:string;
-
-    @Column({
-        nullable:true
-    })
-    LOCATION_ID:string;
-
-    @Column({
-        nullable:true
-    })
-    CATEGORY_ID:string;
-
-    @Column({
-        nullable:true
-    })
-    STAGE_SEMANTIC_ID:string;
-
-    @Column({
-        nullable:true
-    })
-    IS_NEW:string;
-
-    @Column({
-        nullable:true
-    })
-    IS_RECURRING:string;
-
-    @Column({
-        nullable:true
-    })
-    IS_RETURN_CUSTOMER:string;
-
-    @Column({
-        nullable:true
-    })
-    IS_REPEATED_APPROACH:string;
-
-    @Column({
-        nullable:true
-    })
-    SOURCE_ID:string;
-
-    @Column({
-        nullable:true,
-        type:"text"
-    })
-    SOURCE_DESCRIPTION:string;
 
     @Column({
         nullable:true
@@ -181,6 +184,51 @@ export class Deal extends BaseEntity{
         nullable:true
     })
     ORIGIN_ID:string;
+
+    @Column({
+        nullable:true
+    })
+    ADDRESS:string;
+
+    @Column({
+        nullable:true
+    })
+    ADDRESS_2:string;
+
+    @Column({
+        nullable:true
+    })
+    ADDRESS_CITY:string;
+
+    @Column({
+        nullable:true
+    })
+    ADDRESS_POSTAL_CODE:string;
+
+    @Column({
+        nullable:true
+    })
+    ADDRESS_REGION:string;
+
+    @Column({
+        nullable:true
+    })
+    ADDRESS_PROVINCE:string;
+
+    @Column({
+        nullable:true
+    })
+    ADDRESS_COUNTRY:string;
+
+    @Column({
+        nullable:true
+    })
+    ADDRESS_COUNTRY_CODE:string;
+
+    @Column({
+        nullable:true
+    })
+    ADDRESS_LOC_ADDR_ID:string;
 
     @Column({
         nullable:true
@@ -206,28 +254,5 @@ export class Deal extends BaseEntity{
         nullable:true
     })
     UTM_TERM:string;
-
-    @Column({
-        nullable:true,
-        type: "datetime"
-    })
-    BEGINDATE: string;
-
-    @Column({
-        nullable:true,
-        type: "datetime"
-    })
-    CLOSEDATE: string;
-
-    //дата договора
-    @Column({
-        nullable:true,
-        type: "datetime"
-    })
-    UF_CRM_1606396719298:string;
-
-    // @OneToOne(type => Status)
-    // @JoinColumn({name : 'STAGE_ID', referencedColumnName: 'STATUS_ID'})
-    // STATUS: Status;
 
 }
