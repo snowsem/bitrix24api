@@ -69,7 +69,11 @@ export default class BitrixApi {
                 console.log('Name function:',apiMethod.name, 'Next ID:', nextId, 'Count All:', count)
             } else {
                 finish = true;
-                return count;
+                if (processor) {
+                    return count;
+                } else {
+                    return data
+                }
             }
         }
     };
