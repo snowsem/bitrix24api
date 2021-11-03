@@ -17,18 +17,18 @@ dotenv.config();
             const res = await getAllLeads();
             AppLogger.log({
                 level: 'info',
-                message: `Load Leads by cron ${res}`
+                message: `Load Leads by force ${res}`
             });
 
             const res1 = await getAllDeals()
             AppLogger.log({
                 level: 'info',
-                message: `Load Deals by cron ${res1}`
+                message: `Load Deals by force ${res1}`
             });
             const res2 = await getAllStatuses()
             AppLogger.log({
                 level: 'info',
-                message: `Load Statuses by cron ${res2}`
+                message: `Load Statuses by force ${res2}`
             });
 
             const used = process.memoryUsage().heapUsed / 1024 / 1024;
