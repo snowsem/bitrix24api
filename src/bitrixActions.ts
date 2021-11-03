@@ -9,7 +9,7 @@ import {Lead} from "./entity/Lead";
 export const getAllDeals = async () => {
     const bitrixApi = new BitrixApi()
     const bitrixDeals = await bitrixApi.getAll(bitrixApi.getDeals, {
-        select: ["*", "UF_CRM_1606396719298"]
+        select: ["*", "UF_CRM_1606396719298", "UF_CRM_1631260510342"]
     }, 500, async (bitrixDeals) => {
         const dealRepository = getRepository(Deal);
         bitrixDeals.map((item) => {
@@ -18,6 +18,12 @@ export const getAllDeals = async () => {
             if (item.BEGINDATE === '') item.BEGINDATE = null
             if (item.CLOSEDATE === '') item.CLOSEDATE = null
             if (item.UF_CRM_1606396719298 === '') item.UF_CRM_1606396719298 = null
+            if (item.UF_CRM_1631260510342) {
+                const splitStr = item.UF_CRM_1631260510342.split("|");
+                item.DEBT_OF_AMOUNT = splitStr[0] ?? null;
+                item.DEBT_OF_CURRENCY =splitStr[1] ?? null;
+
+            }
             return item
         })
 

@@ -232,6 +232,25 @@ export class Deal extends BaseEntity{
     })
     UF_CRM_1606396719298:Date | null;
 
+    @Column({
+        nullable:true,
+        type: "json"
+    })
+    UF_CRM_1631260510342: string;
+
+    @Column({
+        nullable:true,
+        precision: 19,
+        scale: 2,
+        type: "decimal"
+    })
+    DEBT_OF_AMOUNT:string;
+
+    @Column({
+        nullable:true,
+    })
+    DEBT_OF_CURRENCY:string;
+
     // @OneToOne(type => Status)
     // @JoinColumn({name : 'STAGE_ID', referencedColumnName: 'STATUS_ID'})
     // STATUS: Status;
