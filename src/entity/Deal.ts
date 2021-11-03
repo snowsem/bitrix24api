@@ -95,13 +95,13 @@ export class Deal extends BaseEntity{
 
     @Column({
         nullable:true,
-        type: "datetime"
+        type: "timestamptz"
     })
     DATE_CREATE:string;
 
     @Column({
         nullable:true,
-        type: "datetime"
+        type: "timestamptz"
     })
     DATE_MODIFY:string;
 
@@ -209,20 +209,20 @@ export class Deal extends BaseEntity{
 
     @Column({
         nullable:true,
-        type: "datetime"
+        type: "timestamptz"
     })
     BEGINDATE: string;
 
     @Column({
         nullable:true,
-        type: "datetime"
+        type: "timestamptz"
     })
     CLOSEDATE: string;
 
     //дата договора
     @Column({
         nullable:true,
-        type: "datetime"
+        type: "timestamptz"
     })
     UF_CRM_1606396719298:string;
 

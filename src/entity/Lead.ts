@@ -149,19 +149,19 @@ export class Lead extends BaseEntity{
 
     @Column({
         nullable:true,
-        type: "datetime"
+        type: "timestamptz"
     })
     DATE_CREATE:string;
 
     @Column({
         nullable:true,
-        type: "datetime"
+        type: "timestamptz"
     })
     DATE_MODIFY:string;
 
     @Column({
         nullable:true,
-        type: "datetime"
+        type: "timestamptz"
     })
     DATE_CLOSED:string;
 
