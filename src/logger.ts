@@ -6,13 +6,13 @@ const transport: DailyRotateFile = new DailyRotateFile({
     dirname: 'logs',
     datePattern: 'YYYY-MM-DD-HH',
     zippedArchive: true,
-    maxSize: '20m',
+    maxSize: '40m',
     auditFile: 'logs/audit.json',
     maxFiles: '14d',
     format: format.combine(
             format.timestamp({format: 'MMM-DD-YYYY HH:mm:ss'}),
             format.align(),
-            format.printf(info => `${info.level}: ${[info.timestamp]}: ${info.message}`),
+            format.printf(info => `[${info.level}]: ${[info.timestamp]}: ${info.message}`),
         )
 });
 

@@ -57,9 +57,11 @@ export class Deal extends BaseEntity{
         nullable:true
     })
     TAX_VALUE:string;
+
     @Column({
         nullable:true
     })
+
     LEAD_ID:string;
     @Column({
         nullable:true
@@ -77,15 +79,14 @@ export class Deal extends BaseEntity{
     QUOTE_ID:string;
 
 
-
     @Column({
         nullable:true
     })
     ASSIGNED_BY_ID:string;
+
     @Column({
         nullable:true
     })
-
     CREATED_BY_ID:string;
 
     @Column({
@@ -95,15 +96,17 @@ export class Deal extends BaseEntity{
 
     @Column({
         nullable:true,
-        type: "timestamptz"
+        default: null,
+        type: "date"
     })
-    DATE_CREATE:string;
+    DATE_CREATE:Date | null;
 
     @Column({
         nullable:true,
-        type: "timestamptz"
+        default: null,
+        type: "date"
     })
-    DATE_MODIFY:string;
+    DATE_MODIFY:Date | null;
 
     @Column({
         nullable:true
@@ -209,22 +212,25 @@ export class Deal extends BaseEntity{
 
     @Column({
         nullable:true,
-        type: "timestamptz"
+        default: null,
+        type: "date"
     })
-    BEGINDATE: string;
+    BEGINDATE:Date | null;
 
     @Column({
         nullable:true,
-        type: "timestamptz"
+        default: null,
+        type: "date"
     })
-    CLOSEDATE: string;
+    CLOSEDATE:Date | null;
 
     //дата договора
     @Column({
         nullable:true,
-        type: "timestamptz"
+        default: null,
+        type: "date"
     })
-    UF_CRM_1606396719298:string;
+    UF_CRM_1606396719298:Date | null;
 
     // @OneToOne(type => Status)
     // @JoinColumn({name : 'STAGE_ID', referencedColumnName: 'STATUS_ID'})

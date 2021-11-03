@@ -12,7 +12,16 @@ export const getAllDeals = async ()=>{
         select: ["*", "UF_CRM_1606396719298"]
     }, 500);
     const dealRepository = getRepository(Deal);
-    const dealsChunks = _.chunk(bitrixDeals, 1000);
+    bitrixDeals.map((item)=>{
+        if (item.DATE_CREATE === '') item.DATE_CREATE = null
+        if (item.DATE_MODIFY === '') item.DATE_MODIFY = null
+        if (item.BEGINDATE === '') item.BEGINDATE = null
+        if (item.CLOSEDATE === '') item.CLOSEDATE = null
+        if (item.UF_CRM_1606396719298 === '') item.UF_CRM_1606396719298 = null
+        return item
+    })
+
+    const dealsChunks = _.chunk(bitrixDeals, 100);
 
     for (let i=0; i < dealsChunks.length; i++) {
 
@@ -36,6 +45,15 @@ export const getAllLeads = async ()=>{
     const bitrixLeads = await bitrixApi.getAll(bitrixApi.getLeads, {
         select: ["*"]
     }, 500);
+
+    bitrixLeads.map((item)=>{
+        if (item.DATE_CREATE === '') item.DATE_CREATE = null
+        if (item.DATE_MODIFY === '') item.DATE_MODIFY = null
+        if (item.DATE_CLOSED === '') item.DATE_CLOSED = null
+        if (item.CLOSEDATE === '') item.CLOSEDATE = null
+        return item
+    })
+
     const leadRepository = getRepository(Lead);
     const leadChunks = _.chunk(bitrixLeads, 1000);
 
