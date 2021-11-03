@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'integra',
+      name: 'bitrix24api',
       script: 'dist/index.js',
       restart_delay: 500,
       watch: ['config', 'dist'],
