@@ -31,6 +31,9 @@ dotenv.config();
                 message: `Load Statuses by cron ${res2}`
             });
 
+            const used = process.memoryUsage().heapUsed / 1024 / 1024;
+            console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+
 
         } catch (e) {
             AppLogger.log({

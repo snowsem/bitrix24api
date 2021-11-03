@@ -41,10 +41,11 @@ export default class BitrixApi {
     wait = ms => new Promise(
         (resolve, reject) => setTimeout(resolve, ms)
     );
-    getAll = async (apiMethod: any, payload = null, delay=1000)=>{
+    getAll = async (apiMethod: any, payload = null, delay=1000, processor = null)=>{
         let nextId = 0;
         let finish = false;
         let data: any = [];
+        let count = 0;
 
         while (!finish) {
             await this.wait(delay);
@@ -57,14 +58,18 @@ export default class BitrixApi {
             const apiResult = await apiMethod({ ...payload,...filter });
 
             if (apiResult.data.result.length>0) {
-
-                data = [...data, ...apiResult.data.result];
+                if (processor) {
+                    data = await processor(apiResult.data.result);
+                } else {
+                    data = [...data, ...apiResult.data.result];
+                }
                 const lastElem = apiResult.data.result.pop();
                 nextId = lastElem.ID;
-                console.log('Name function:',apiMethod.name, 'Next ID:', nextId, 'Size:', data.length)
+                count+=apiResult.data.result.length
+                console.log('Name function:',apiMethod.name, 'Next ID:', nextId, 'Count All:', count)
             } else {
                 finish = true;
-                return data;
+                return count;
             }
         }
     };
