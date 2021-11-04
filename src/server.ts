@@ -14,7 +14,7 @@ createConnection().then(connection => {
         res.send('hellos')
     })
 
-    app.get('/incoming', (req, res)=>{
+    app.post('/incoming', (req, res)=>{
         AppLogger.log({
             level: 'info',
             message: `Body ${req.body}, params ${stringify(req.params)}, q ${stringify(req.query)}, h ${stringify(req.headers)}`
