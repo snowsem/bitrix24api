@@ -22,6 +22,14 @@ createConnection().then(connection => {
         res.send(req.request);
     });
 
+    app.get('/incoming', (req, res)=>{
+        AppLogger.log({
+            level: 'info',
+            message: `Body ${req.body}, params ${stringify(req.params)}, q ${stringify(req.query)}, h ${stringify(req.headers)}`
+        })
+        res.send(req.request);
+    });
+
     app.listen(port, () => {
         console.log(`server started at http://localhost:${port}`);
     });
