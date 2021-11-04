@@ -17,7 +17,7 @@ createConnection().then(connection => {
     app.post('/incoming', (req, res)=>{
         AppLogger.log({
             level: 'info',
-            message: `Body ${stringify(req)}`
+            message: `Body ${stringify(req)} ${stringify(req.request)}`
         })
         res.send(req.request);
     });
