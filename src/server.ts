@@ -4,6 +4,7 @@ import { createConnection } from 'typeorm';
 import {AppLogger} from "./logger";
 import {stringify} from "qs";
 import bodyParser from "body-parser";
+import {action} from "./incomingWebhookAction";
 
 dotenv.config();
 createConnection().then(connection => {
@@ -21,7 +22,8 @@ createConnection().then(connection => {
             level: 'info',
             message: `Body ${req.body}, params ${stringify(req.params)}, q ${stringify(req.query)}, h ${stringify(req.headers)}`
         })
-        res.send(req.request);
+        action(req.body);
+        res.send(req.body);
     });
 
     app.get('/incoming', (req, res)=>{

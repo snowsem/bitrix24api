@@ -22,6 +22,10 @@ export default class BitrixApi {
         return await this.api.get('crm.deal.list.json', { params: { ...payload } });
     };
 
+    getDeal = async (payload: any = null)=>{
+        return await this.api.get('crm.deal.get.json', { params: { ...payload } });
+    };
+
     getLeads = async (payload: any = null)=>{
         return await this.api.get('crm.lead.list.json', { params: { ...payload } });
     };
