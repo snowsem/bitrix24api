@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import { createConnection } from 'typeorm';
 import {AppLogger} from "./logger";
+import {stringify} from "qs";
 
 dotenv.config();
 createConnection().then(connection => {
@@ -16,7 +17,7 @@ createConnection().then(connection => {
     app.get('/incoming', (req, res)=>{
         AppLogger.log({
             level: 'info',
-            message: req
+            message: `Body ${req.body}, params ${stringify(req.params)}, q ${stringify(req.query)}, h ${stringify(req.headers)}`
         })
         res.send('OK');
     });
