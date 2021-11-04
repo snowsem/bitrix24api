@@ -1,5 +1,5 @@
 import BitrixApi from "./bitrixApi";
-import {getRepository} from "typeorm";
+import {getConnection, getRepository} from "typeorm";
 import {Deal} from "./entity/Deal";
 
 export const action = async (body) => {
@@ -7,6 +7,11 @@ export const action = async (body) => {
         if (body.event === 'ONCRMDEALUPDATE' || body.event === 'ONCRMDEALADD') {
             await onCrmDealCreateOrUpdate(body)
         }
+
+        if (body.event === 'ONCRMDEALDELETE') {
+            await onCrmDealDelete(body)
+        }
+
     } catch (e) {
         throw new Error(e);
     }
@@ -30,8 +35,14 @@ export const onCrmDealCreateOrUpdate = async (body) => {
     }
 }
 
-export const onCrmDealDelete = (body) => {
-
+export const onCrmDealDelete =async (body) => {
+    const dealId = body.data['FIELDS']['ID'];
+    await getConnection()
+        .createQueryBuilder()
+        .delete()
+        .from(Deal)
+        .where("ID = :id", { id: dealId })
+        .execute();
 }
 
 export const dealFormatter = (deal) => {
