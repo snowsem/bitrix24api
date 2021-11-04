@@ -24,7 +24,8 @@
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.38",
     "winston": "^3.3.3",
-    "winston-daily-rotate-file": "^4.5.5"
+    "winston-daily-rotate-file": "^4.5.5",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/node": "^16.10.9",

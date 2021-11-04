@@ -10,15 +10,15 @@ dotenv.config();
 (async () => {
     createConnection().then(async connection => {
         try {
-            // AppLogger.log({
-            //     level: 'info',
-            //     message: `FORCE LOAD DATA!`
-            // });
-            // const res = await getAllLeads();
-            // AppLogger.log({
-            //     level: 'info',
-            //     message: `Load Leads by force ${res}`
-            // });
+            AppLogger.log({
+                level: 'info',
+                message: `FORCE LOAD DATA!`
+            });
+            const res = await getAllLeads();
+            AppLogger.log({
+                level: 'info',
+                message: `Load Leads by force ${res}`
+            });
 
             const res1 = await getAllDeals()
             AppLogger.log({
