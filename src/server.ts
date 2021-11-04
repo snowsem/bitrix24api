@@ -19,7 +19,7 @@ createConnection().then(connection => {
             level: 'info',
             message: `Body ${req.body}, params ${stringify(req.params)}, q ${stringify(req.query)}, h ${stringify(req.headers)}`
         })
-        res.send('OK');
+        res.send(req.request);
     });
 
     app.listen(port, () => {
