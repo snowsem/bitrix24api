@@ -13,7 +13,7 @@ createConnection().then(connection => {
         res.send('hellos')
     })
 
-    app.get('incoming', (req, res)=>{
+    app.get('/incoming', (req, res)=>{
         AppLogger.log({
             level: 'info',
             message: req
