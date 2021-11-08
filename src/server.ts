@@ -22,7 +22,7 @@ createConnection().then(connection => {
             level: 'info',
             message: `Bitrix ${stringify(req.body)}`
         })
-        action(req.body);
+        const actionPromise = action(req.body);
         res.send(req.body);
     });
 
